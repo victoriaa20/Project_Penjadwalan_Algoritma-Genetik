@@ -17,7 +17,7 @@ Aplikasi penjadwalan kuliah menggunakan algoritma genetika, dibuat dengan Stream
 
 ```bash
 git clone <URL_REPOSITORI>
-cd penjadwalan-ag
+cd Project_Penjadwalan_Algoritma-Genetik
 
 python -m venv .venv
 source .venv/bin/activate   # Windows: .venv\Scripts\activate
