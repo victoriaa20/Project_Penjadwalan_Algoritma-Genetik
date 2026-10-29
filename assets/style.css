@@ -1,0 +1,949 @@
+/* =============================================================================
+   assets/style.css — JadwalGA Lumio Glass Theme
+   Design tokens dari docs/style.json
+   ============================================================================= */
+
+/* --- Google Fonts --- */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+
+/* ===========================================================================
+   CSS Custom Properties (Design Tokens)
+   =========================================================================== */
+:root {
+  /* Brand palette */
+  --brand-deepest: #0A3847;
+  --brand-deep: #0E4F66;
+  --primary: #0F5F7F;
+  --brand-mid: #2A7C91;
+  --brand-soft: #7FA9B8;
+  --brand-mist: #BFD4DC;
+  --brand-wash: #DCE9EC;
+
+  /* Backgrounds */
+  --bg-app: #EFEFF0;
+  --bg-frame: #F6F7F7;
+  --bg-card: rgba(255, 255, 255, 0.72);
+  --bg-card-solid: #F7F9F9;
+  --bg-card-inner: rgba(255, 255, 255, 0.85);
+
+  /* Borders & dividers */
+  --border: rgba(255, 255, 255, 0.65);
+  --border-solid: #E4E8EA;
+  --divider: #E4E8EA;
+
+  /* Text */
+  --text: #101416;
+  --text-secondary: #5E6A70;
+  --text-muted: #8A969B;
+  --text-on-dark: #FFFFFF;
+
+  /* Semantic */
+  --positive: #1F8A4C;
+  --negative: #D93B3B;
+  --warning: #C98A12;
+  --info: #0F5F7F;
+
+  /* Badge — Valid (hijau) */
+  --badge-valid-bg: #D6EFE0;
+  --badge-valid-fg: #1B6B3A;
+  --badge-valid-br: #B5E0C5;
+
+  /* Badge — Kapasitas (biru) */
+  --badge-cap-bg: #D5E6EE;
+  --badge-cap-fg: #0B4A66;
+  --badge-cap-br: #B4D1DE;
+
+  /* Badge — Bentrok (merah muda) */
+  --badge-conflict-bg: #F8D9DB;
+  --badge-conflict-fg: #9B2530;
+  --badge-conflict-br: #F0BDC1;
+
+  /* Badge — Di luar preferensi (kuning) */
+  --badge-pref-bg: #F6E8C4;
+  --badge-pref-fg: #7A5608;
+  --badge-pref-br: #EBD5A0;
+
+  /* Badge — Netral */
+  --badge-neutral-bg: #ECEFF0;
+  --badge-neutral-fg: #4A565B;
+  --badge-neutral-br: #DDE2E4;
+
+  /* Warna per kelas */
+  --class-ia: #0F5F7F;
+  --class-ib: #2E9E6B;
+  --class-iiia: #7A6FC9;
+  --class-iiib: #E08A3C;
+  --class-va: #D9648F;
+  --class-vb: #2BB3B1;
+
+  /* Radius */
+  --radius-frame: 32px;
+  --radius-card: 24px;
+  --radius-inner: 16px;
+  --radius-input: 14px;
+  --radius-pill: 999px;
+  --radius-bar: 4px;
+
+  /* Shadows */
+  --shadow-card: 0 1px 0 rgba(255, 255, 255, 0.8) inset, 0 8px 24px rgba(15, 60, 80, 0.06);
+  --shadow-button: 0 2px 8px rgba(10, 56, 71, 0.12);
+
+  /* Spacing */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 12px;
+  --space-lg: 16px;
+  --space-xl: 20px;
+  --space-2xl: 24px;
+  --space-3xl: 32px;
+  --space-4xl: 48px;
+
+  /* Typography */
+  --font-ui: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+
+  /* Motion */
+  --duration-fast: 120ms;
+  --duration-base: 200ms;
+  --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+/* ===========================================================================
+   Global Reset & Base
+   =========================================================================== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  font-family: var(--font-ui);
+  font-size: 14px;
+  color: var(--text);
+  background-color: var(--bg-app);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ===========================================================================
+   Streamlit — override elemen bawaan
+   =========================================================================== */
+
+/* Latar utama */
+.stApp {
+  background-color: var(--bg-app) !important;
+  font-family: var(--font-ui) !important;
+}
+
+/* Hilangkan footer & hamburger menu */
+footer {
+  visibility: hidden !important;
+}
+
+#MainMenu {
+  visibility: hidden !important;
+}
+
+/* Container utama */
+.block-container {
+  padding-top: 3.5rem !important;
+  padding-bottom: 3rem !important;
+  max-width: 1280px !important;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-app);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--brand-mist);
+  border-radius: var(--radius-pill);
+}
+
+/* ===========================================================================
+   Hero Banner Lumio
+   =========================================================================== */
+.jadwalga-hero {
+  background: linear-gradient(115deg, #0A3847 0%, #0E4F66 35%, #2A7C91 62%, #BFD4DC 85%, #E3ECEE 100%);
+  border-radius: var(--radius-card);
+  padding: 32px var(--space-2xl);
+  margin-bottom: var(--space-xl);
+  position: relative;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+/* Grain overlay */
+.jadwalga-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E");
+  pointer-events: none;
+  opacity: 0.06;
+}
+
+.jadwalga-hero-title {
+  font-size: 36px;
+  font-weight: 300;
+  color: var(--text-on-dark);
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+.jadwalga-hero-sub {
+  font-size: 15px;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.78);
+  margin-top: 8px;
+  line-height: 1.5;
+}
+
+/* ===========================================================================
+   Glassmorphism Card
+   =========================================================================== */
+.jadwalga-card {
+  background: var(--bg-card);
+  backdrop-filter: blur(14px) saturate(120%);
+  -webkit-backdrop-filter: blur(14px) saturate(120%);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  padding: var(--space-xl);
+  box-shadow: var(--shadow-card);
+  transition: box-shadow var(--duration-base) var(--ease);
+  box-sizing: border-box;
+  max-width: 100%;
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+
+.jadwalga-card:hover {
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.9) inset, 0 12px 32px rgba(15, 60, 80, 0.10);
+}
+
+/* Streamlit Bordered Container Styling */
+[data-testid="stVerticalBlockBorderWrapper"] {
+  border-radius: var(--radius-card) !important;
+  border: 1px solid var(--border) !important;
+  background: var(--bg-card) !important;
+  backdrop-filter: blur(14px) saturate(120%) !important;
+  -webkit-backdrop-filter: blur(14px) saturate(120%) !important;
+  box-shadow: var(--shadow-card) !important;
+  box-sizing: border-box !important;
+  max-width: 100% !important;
+  overflow: hidden !important;
+  transition: box-shadow var(--duration-base) var(--ease);
+}
+
+[data-testid="stVerticalBlockBorderWrapper"]:hover {
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.9) inset, 0 12px 32px rgba(15, 60, 80, 0.10) !important;
+}
+
+[data-testid="stVerticalBlockBorderWrapper"]>div {
+  padding: var(--space-xl) !important;
+  box-sizing: border-box !important;
+}
+
+.jadwalga-card-title {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--text);
+  margin-bottom: var(--space-md);
+}
+
+.jadwalga-card-subtitle {
+  font-size: 12px;
+  color: var(--text-secondary);
+  margin-bottom: var(--space-sm);
+}
+
+/* Highlight Card (gradien biru teal) */
+.jadwalga-highlight-card {
+  background: linear-gradient(150deg, #0D4A60 0%, #17687F 45%, #5E9DB0 75%, #B6D3DB 100%);
+  border-radius: var(--radius-card);
+  padding: var(--space-2xl);
+  color: var(--text-on-dark);
+}
+
+.jadwalga-highlight-card h3 {
+  font-size: 26px;
+  font-weight: 400;
+  line-height: 1.2;
+  margin-bottom: var(--space-sm);
+}
+
+.jadwalga-highlight-card p {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.5;
+}
+
+/* ===========================================================================
+   Navigasi Top — Nav Pills
+   =========================================================================== */
+.jadwalga-nav {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+  padding: var(--space-md) 0;
+}
+
+.jadwalga-nav-logo {
+  font-size: 22px;
+  font-weight: 500;
+  color: var(--text-on-dark);
+  margin-right: var(--space-xl);
+  text-decoration: none;
+  letter-spacing: -0.01em;
+}
+
+.jadwalga-nav-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 40px;
+  padding: 0 18px;
+  border-radius: var(--radius-pill);
+  font-size: 13px;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.85);
+  background: rgba(255, 255, 255, 0.10);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  cursor: pointer;
+  transition: background var(--duration-fast) var(--ease);
+  text-decoration: none;
+}
+
+.jadwalga-nav-pill:hover {
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.jadwalga-nav-pill.active {
+  background: rgba(255, 255, 255, 0.22);
+  color: #FFFFFF;
+  font-weight: 500;
+}
+
+/* ===========================================================================
+   Stat Card (Pil Statistik)
+   =========================================================================== */
+.stat-card {
+  background: var(--bg-card);
+  backdrop-filter: blur(14px) saturate(120%);
+  -webkit-backdrop-filter: blur(14px) saturate(120%);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  padding: var(--space-xl);
+  box-shadow: var(--shadow-card);
+  text-align: left;
+  box-sizing: border-box;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  max-width: 100%;
+}
+
+.stat-icon-box {
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--space-md);
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+.stat-label {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text);
+  margin-bottom: 4px;
+  line-height: 1.3;
+  min-height: 2.6em;
+  word-break: break-word;
+}
+
+.stat-value {
+  font-size: clamp(22px, 2.2vw, 32px);
+  font-weight: 400;
+  color: var(--text);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  word-break: break-word;
+  margin-bottom: 4px;
+}
+
+.stat-delta {
+  font-size: 12px;
+  color: var(--text-secondary);
+  margin-top: auto;
+  padding-top: 4px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  line-height: 1.3;
+  word-break: break-word;
+}
+
+/* ===========================================================================
+   Badge
+   =========================================================================== */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  height: 24px;
+  padding: 0 10px;
+  border-radius: var(--radius-pill);
+  font-size: 12px;
+  font-weight: 500;
+  border: 1px solid transparent;
+  white-space: nowrap;
+}
+
+.badge-valid {
+  background: var(--badge-valid-bg);
+  color: var(--badge-valid-fg);
+  border-color: var(--badge-valid-br);
+}
+
+.badge-capacity {
+  background: var(--badge-cap-bg);
+  color: var(--badge-cap-fg);
+  border-color: var(--badge-cap-br);
+}
+
+.badge-conflict {
+  background: var(--badge-conflict-bg);
+  color: var(--badge-conflict-fg);
+  border-color: var(--badge-conflict-br);
+}
+
+.badge-preference {
+  background: var(--badge-pref-bg);
+  color: var(--badge-pref-fg);
+  border-color: var(--badge-pref-br);
+}
+
+.badge-neutral {
+  background: var(--badge-neutral-bg);
+  color: var(--badge-neutral-fg);
+  border-color: var(--badge-neutral-br);
+}
+
+/* ===========================================================================
+   Session Item (Jadwal Harian)
+   =========================================================================== */
+.session-item {
+  display: flex;
+  gap: var(--space-md);
+  background: var(--bg-card-inner);
+  border-radius: var(--radius-inner);
+  padding: 12px var(--space-lg);
+  margin-bottom: var(--space-sm);
+  position: relative;
+  overflow: hidden;
+  transition: transform var(--duration-fast) var(--ease);
+  box-sizing: border-box;
+  max-width: 100%;
+}
+
+.session-item:hover {
+  transform: translateX(2px);
+}
+
+.session-bar {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  border-radius: var(--radius-bar) 0 0 var(--radius-bar);
+  flex-shrink: 0;
+}
+
+.session-content {
+  flex: 1;
+  min-width: 0;
+  padding-left: 8px;
+}
+
+.session-title {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text);
+  word-break: break-word;
+  line-height: 1.35;
+}
+
+.session-meta {
+  font-size: 12px;
+  color: var(--text-secondary);
+  margin-top: 4px;
+  word-break: break-word;
+  line-height: 1.4;
+}
+
+/* ===========================================================================
+   Constraint Checklist
+   =========================================================================== */
+.constraint-item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-md);
+  min-height: 42px;
+  height: auto;
+  padding: 10px 0;
+  font-size: 13px;
+  line-height: 1.4;
+  border-bottom: 1px solid var(--divider);
+  box-sizing: border-box;
+  word-break: break-word;
+}
+
+.constraint-item>span:first-child {
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.constraint-item:last-child {
+  border-bottom: none;
+}
+
+.constraint-icon-pass {
+  color: var(--positive);
+  font-size: 18px;
+}
+
+.constraint-icon-fail {
+  color: var(--negative);
+  font-size: 18px;
+}
+
+.constraint-icon-info {
+  color: var(--warning);
+  font-size: 18px;
+}
+
+/* ===========================================================================
+   Day Selector (Jadwal Harian)
+   =========================================================================== */
+.day-selector {
+  display: flex;
+  gap: 4px;
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: var(--radius-pill);
+  padding: 4px;
+  width: fit-content;
+  margin-bottom: var(--space-lg);
+}
+
+.day-btn {
+  height: 36px;
+  padding: 0 var(--space-lg);
+  border-radius: var(--radius-pill);
+  border: none;
+  font-size: 13px;
+  color: var(--text-secondary);
+  background: transparent;
+  cursor: pointer;
+  transition: all var(--duration-fast) var(--ease);
+  font-family: var(--font-ui);
+}
+
+.day-btn.active {
+  background: var(--primary);
+  color: #FFFFFF;
+  box-shadow: var(--shadow-button);
+}
+
+.day-btn:hover:not(.active) {
+  background: rgba(15, 95, 127, 0.08);
+}
+
+/* ===========================================================================
+   Schedule Grid (Tabel Hari × Slot)
+   =========================================================================== */
+.schedule-grid table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 6px;
+}
+
+.schedule-grid th {
+  background: var(--primary);
+  color: #FFFFFF;
+  font-size: 13px;
+  font-weight: 500;
+  padding: 10px var(--space-md);
+  border-radius: var(--radius-inner);
+  text-align: center;
+}
+
+.schedule-grid td {
+  background: var(--bg-card-inner);
+  border-radius: 12px;
+  border: 1px solid var(--border-solid);
+  padding: 10px var(--space-md);
+  font-size: 12px;
+  vertical-align: top;
+  min-width: 130px;
+  min-height: 80px;
+  position: relative;
+  overflow: hidden;
+}
+
+.schedule-grid td.empty-cell {
+  background: #F1F4F5;
+}
+
+.schedule-cell-bar {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+}
+
+/* ===========================================================================
+   Buttons
+   =========================================================================== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 40px;
+  padding: 0 22px;
+  border-radius: var(--radius-pill);
+  font-size: 13px;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+  transition: all var(--duration-base) var(--ease);
+  font-family: var(--font-ui);
+}
+
+.btn:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(15, 95, 127, 0.35);
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-solid-primary {
+  background: var(--primary);
+  color: #FFFFFF;
+  box-shadow: var(--shadow-button);
+}
+
+.btn-solid-primary:hover:not(:disabled) {
+  background: var(--brand-deep);
+}
+
+.btn-solid-light {
+  background: #FFFFFF;
+  color: var(--primary);
+  box-shadow: var(--shadow-button);
+}
+
+.btn-solid-light:hover:not(:disabled) {
+  background: #f0f5f7;
+}
+
+.btn-outline-light {
+  background: transparent;
+  color: #FFFFFF;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+}
+
+.btn-outline-light:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.btn-soft {
+  background: #FFFFFF;
+  color: var(--text);
+  border: 1px solid var(--border-solid);
+}
+
+.btn-soft:hover:not(:disabled) {
+  background: var(--bg-app);
+}
+
+/* ===========================================================================
+   Input & Select
+   =========================================================================== */
+.jadwalga-input {
+  height: 44px;
+  border-radius: var(--radius-input);
+  background: var(--bg-card-inner);
+  border: 1px solid var(--border-solid);
+  font-size: 14px;
+  font-family: var(--font-ui);
+  color: var(--text);
+  padding: 0 var(--space-lg);
+  width: 100%;
+  transition: border-color var(--duration-fast) var(--ease), box-shadow var(--duration-fast) var(--ease);
+}
+
+.jadwalga-input::placeholder {
+  color: var(--text-muted);
+}
+
+.jadwalga-input:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(15, 95, 127, 0.18);
+}
+
+/* ===========================================================================
+   Table
+   =========================================================================== */
+.jadwalga-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.jadwalga-table thead th {
+  font-size: 12px;
+  color: var(--text-secondary);
+  font-weight: 500;
+  text-align: left;
+  padding: 0 var(--space-md);
+  height: 36px;
+  border-bottom: 1px solid var(--divider);
+}
+
+.jadwalga-table tbody tr {
+  height: 52px;
+  border-bottom: 1px solid var(--divider);
+  transition: background var(--duration-fast) var(--ease);
+}
+
+.jadwalga-table tbody tr:hover {
+  background: rgba(15, 95, 127, 0.05);
+}
+
+.jadwalga-table tbody td {
+  padding: 0 var(--space-md);
+  font-size: 14px;
+  color: var(--text);
+}
+
+/* ===========================================================================
+   Progress Bar
+   =========================================================================== */
+.jadwalga-progress-track {
+  height: 8px;
+  border-radius: var(--radius-pill);
+  background: var(--divider);
+  overflow: hidden;
+}
+
+.jadwalga-progress-bar {
+  height: 100%;
+  border-radius: var(--radius-pill);
+  background: var(--primary);
+  transition: width var(--duration-base) var(--ease);
+}
+
+/* ===========================================================================
+   Empty State
+   =========================================================================== */
+.empty-state {
+  text-align: center;
+  padding: var(--space-4xl) var(--space-2xl);
+}
+
+.empty-state-icon {
+  font-size: 48px;
+  margin-bottom: var(--space-lg);
+  opacity: 0.4;
+}
+
+.empty-state-title {
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--text);
+  margin-bottom: var(--space-sm);
+}
+
+.empty-state-body {
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin-bottom: var(--space-xl);
+}
+
+/* ===========================================================================
+   Warna kelas (helper classes)
+   =========================================================================== */
+.class-color-ia {
+  background-color: var(--class-ia);
+}
+
+.class-color-ib {
+  background-color: var(--class-ib);
+}
+
+.class-color-iiia {
+  background-color: var(--class-iiia);
+}
+
+.class-color-iiib {
+  background-color: var(--class-iiib);
+}
+
+.class-color-va {
+  background-color: var(--class-va);
+}
+
+.class-color-vb {
+  background-color: var(--class-vb);
+}
+
+/* ===========================================================================
+   Tooltip
+   =========================================================================== */
+.jadwalga-tooltip {
+  background: #0B1F28;
+  color: #FFFFFF;
+  border-radius: 10px;
+  padding: 6px 10px;
+  font-size: 11px;
+  pointer-events: none;
+}
+
+/* Streamlit UI Component containment & styling */
+div[data-testid="stHorizontalBlock"] {
+  width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+div[data-testid="column"] {
+  min-width: 0 !important;
+  box-sizing: border-box !important;
+}
+
+div[data-testid="stButton"]>button,
+div[data-testid="stDownloadButton"]>button {
+  border-radius: var(--radius-pill) !important;
+  font-family: var(--font-ui) !important;
+  font-size: 13px !important;
+  font-weight: 500 !important;
+  box-sizing: border-box !important;
+  white-space: normal !important;
+  word-break: break-word !important;
+  min-height: 40px !important;
+  height: auto !important;
+  padding: 8px 16px !important;
+  line-height: 1.25 !important;
+  transition: all var(--duration-base) var(--ease) !important;
+}
+
+div[data-testid="stButton"]>button[kind="primary"],
+div[data-testid="stDownloadButton"]>button[kind="primary"] {
+  background: var(--primary) !important;
+  color: #FFFFFF !important;
+  border: none !important;
+  box-shadow: var(--shadow-button) !important;
+}
+
+div[data-testid="stButton"]>button[kind="primary"]:hover,
+div[data-testid="stDownloadButton"]>button[kind="primary"]:hover {
+  background: var(--brand-deep) !important;
+  color: #FFFFFF !important;
+}
+
+div[data-testid="stButton"]>button[kind="secondary"],
+div[data-testid="stDownloadButton"]>button[kind="secondary"] {
+  background: #FFFFFF !important;
+  color: var(--text) !important;
+  border: 1px solid var(--border-solid) !important;
+}
+
+div[data-testid="stButton"]>button[kind="secondary"]:hover,
+div[data-testid="stDownloadButton"]>button[kind="secondary"]:hover {
+  background: var(--bg-card-solid) !important;
+  border-color: var(--brand-soft) !important;
+}
+
+[data-testid="stPyplot"],
+[data-testid="stImage"] {
+  max-width: 100% !important;
+  overflow: hidden !important;
+  box-sizing: border-box !important;
+}
+
+[data-testid="stPyplot"]>div,
+[data-testid="stPyplot"] img {
+  max-width: 100% !important;
+  height: auto !important;
+  border-radius: var(--radius-inner) !important;
+  display: block !important;
+}
+
+[data-testid="stDataFrame"],
+[data-testid="stTable"] {
+  max-width: 100% !important;
+  overflow-x: auto !important;
+  box-sizing: border-box !important;
+}
+
+/* ===========================================================================
+   Respons layar kecil
+   =========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@media (max-width: 1280px) {
+  .block-container {
+    padding: 3.5rem var(--space-lg) 3rem !important;
+  }
+}
+
+@media (max-width: 1024px) {
+  .jadwalga-hero {
+    padding: var(--space-2xl) var(--space-lg);
+  }
+
+  .stat-value {
+    font-size: 26px;
+  }
+}
+
+@media (max-width: 768px) {
+  .block-container {
+    padding: 3rem var(--space-md) 2rem !important;
+  }
+
+  .jadwalga-hero-title {
+    font-size: 26px;
+  }
+
+  .jadwalga-hero-sub {
+    font-size: 13px;
+  }
+}

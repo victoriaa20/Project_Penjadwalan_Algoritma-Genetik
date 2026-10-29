@@ -1,0 +1,21 @@
+﻿Hari,Jam,Kode,Mata Kuliah,Kelas,Dosen,Ruang,SKS
+Senin,07.00–09.30,MK12,Pengolahan Citra Digital,V-B,"Nahumi Nugrahaningsih, S.T., M.T., Ph.D.",FT5,3
+Senin,09.30–12.00,MK06,Pemrograman Berorientasi Objek,III-A,"Widiatry, S.T., M.T.",FT4,3
+Selasa,07.00–09.30,MK05,Algoritma dan Pemrograman I,I-A,"Widiatry, S.T., M.T.",GKTA-LT4,3
+Selasa,07.00–09.30,MK18,Sistem Digital,I-B,"Septian Geges, S.Kom., M.Kom.",GKTA-LT5,3
+Selasa,12.00–14.30,MK09,Basis Data I,III-B,"Efrans Christian, S.T., M.T.",GKTA-LT4,3
+Rabu,07.00–09.30,MK15,Basis Data I,III-A,"Devi Karolita, S.Kom., M.Kom., Ph.D.",FT4,3
+Rabu,07.00–09.30,MK01,Aljabar Linear Matriks,I-A,"Felicia Sylviana, S.T., M.M.",GKTA-LT4,3
+Rabu,09.30–12.00,MK08,Pemrograman Berorientasi Objek,III-B,"Efrans Christian, S.T., M.T.",FT5,3
+Rabu,14.30–17.00,MK16,Keamanan Data dan Informasi,V-A,"Agus Sehatman Saragih, S.T., M.Eng.",FT6,3
+Rabu,17.00–19.30,MK07,Logika Diskrit,I-B,"Efrans Christian, S.T., M.T.",FT4,3
+Rabu,17.00–19.30,MK03,Metodologi Penelitian,V-A,"Felicia Sylviana, S.T., M.M.",FT6,3
+Kamis,09.30–12.00,MK17,Kompleksitas Algoritma,III-A,"Agus Sehatman Saragih, S.T., M.Eng.",FT5,3
+Kamis,12.00–14.30,MK02,Pengantar Teknik Informatika,I-A,"Felicia Sylviana, S.T., M.M.",GKTA-LT5,3
+Kamis,17.00–19.30,MK11,Analisis dan Desain Perangkat Lunak,V-B,"Deddy Ronaldo, S.T., M.T.",FT4,3
+Jumat,07.00–09.30,MK20,Sistem Digital,I-A,"Nahumi Nugrahaningsih, S.T., M.T., Ph.D.",GKTA-LT4,3
+Jumat,07.00–09.30,MK14,Interaksi Manusia dan Komputer,III-A,"Devi Karolita, S.Kom., M.Kom., Ph.D.",GKTA-LT5,3
+Jumat,09.30–12.00,MK10,Data Mining,V-B,"Efrans Christian, S.T., M.T.",FT4,3
+Jumat,12.00–14.30,MK04,Logika Diskrit,I-A,"Widiatry, S.T., M.T.",GKTA-LT4,3
+Jumat,14.30–17.00,MK13,Metodologi Penelitian,V-B,"Devi Karolita, S.Kom., M.Kom., Ph.D.",GKTA-LT4,3
+Jumat,17.00–19.30,MK19,Jaringan Syaraf Tiruan,V-A,"Septian Geges, S.Kom., M.Kom.",FT4,3
